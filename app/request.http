@@ -1,0 +1,94 @@
+POST http://127.0.0.1:8080/api/users/
+Content-Type: application/json
+
+{
+  "name": "artem",
+  "email": "artem1234@mail.ru",
+  "password": "1999513"
+}
+
+###
+
+GET http://127.0.0.1:8080/api/users/
+
+###
+
+POST http://127.0.0.1:8080/api/users/login/
+Content-Type: application/json
+
+{
+  "email": "artem1234@mail.ru",
+  "password": "1999513"
+}
+
+###
+
+GET http://127.0.0.1:8080/api/users/me
+Content-Type: application/json
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA2IDIxOjE2OjMyLjQxODcyNCJ9.ZtGsX_m4Yoqt4jD4rATxK23pvpu_cCuFVKUuoK8MWH0
+
+###
+
+POST http://127.0.0.1:8080/api/users/logout
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA2IDIxOjE2OjMyLjQxODcyNCJ9.ZtGsX_m4Yoqt4jD4rATxK23pvpu_cCuFVKUuoK8MWH0
+###
+
+PUT http://127.0.0.1:8080/api/users/10572
+Content-Type: application/json
+
+{
+  "name": "frank"
+}
+
+###
+
+POST http://127.0.0.1:8080/api/chat/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "name": "first",
+  "member": 10572
+}
+
+###
+
+GET http://127.0.0.1:8080/api/chat/all/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
+
+###
+
+GET http://127.0.0.1:8080/api/chat/12/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
+
+###
+
+PUT http://127.0.0.1:8080/api/chat/12/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
+Content-Type: application/json
+
+{
+  "name": "second"
+}
+
+###
+
+DELETE http://127.0.0.1:8080/api/chat/12/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
+
+###
+
+POST http://127.0.0.1:8080/api/message/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "content": "hello"
+}
+
+###
+
+GET http://127.0.0.1:8080/api/message/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+###
