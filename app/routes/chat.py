@@ -11,4 +11,4 @@ def chat_setup_routes(app):
     # get chat detail
     app.router.add_get('/api/chat/{id}/', get_chat_by_id)
     # update chat name
-    app.router.add_put('/api/chat/{id}/', update_chat_by_id)
+    app.router.add_patch('/api/chat/{id}/', update_chat_by_id)

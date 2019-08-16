@@ -17,7 +17,7 @@ class Token(Base):
                 token = await connection.fetch('''SELECT user_id, token, date FROM public.token WHERE user_id = $1''', self.user_id)
             return {"user_id": token[0][0], "token": token[0][1], "date": token[0][2]}
         except Exception as error:
-            pass
+            print(error)
 
     def set_date(self, date):
         if self.validate_date(date):
@@ -50,14 +50,14 @@ class Token(Base):
                 token = await connection.fetch('''SELECT user_id, token, date FROM public.token WHERE user_id=$1''', int(user_id))
                 return token
         except Exception as error:
-            pass
+            print(error)
             
     async def save_to_db(self):
         try:
             async with Database.pool.acquire() as connection:
                 await connection.execute('''INSERT INTO public.token (token, date, user_id) VALUES ($1, $2, $3)''', self.token, self.date, self.user_id)
         except Exception as error:
-            pass
+            print(error)
 
     @staticmethod
     async def delete(id):

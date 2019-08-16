@@ -17,4 +17,4 @@ class Database:
             dsn = 'postgres://{}:{}@{}:{}/{}'.format(user, password, host, port, database)
             cls.pool = await asyncpg.create_pool(dsn, command_timeout=60)
         except Exception as error:
-            pass
+            print(error)

@@ -12,7 +12,7 @@ class User(Base):
         self.set_password(password)
 
     def __repr__(self):
-        return '<User name={}, email={}>'.format(self.id, self.name, self.email)
+        return '<User name={}, email={}>'.format(self.name, self.email)
 
     async def to_json(self):
         async with Database.pool.acquire() as connection:
@@ -43,8 +43,8 @@ class User(Base):
         try:
             password = User.hash_password(password)
             self.password = password.decode('utf-8')
-        except Exception:
-            pass
+        except Exception as error:
+            print(error)
 
     def hash_password(password: str):
         password = password.strip()
@@ -59,7 +59,7 @@ class User(Base):
                 user = await connection.fetch('''SELECT id, name, email FROM public.users WHERE id=$1''', int(id))
                 return user[0]
             except Exception as error:
-                pass
+                print(error)
 
     async def save_to_db(self):
         async with Database.pool.acquire() as connection:
@@ -71,7 +71,7 @@ class User(Base):
             try:
                 await connection.execute('''DELETE FROM public.users WHERE id = $1''', int(id))
             except Exception as error:
-                pass
+                print(error)
 
     @staticmethod
     async def all():
@@ -92,7 +92,7 @@ class User(Base):
             async with Database.pool.acquire() as connection:
                 await connection.execute('''UPDATE public.users SET {} = $1 WHERE id = $2'''.format(field), value, int(id))
         except Exception as error:
-            pass
+            print(error)
 
 # user = """CREATE TABLE IF NOT EXISTS users(
 #         id serial PRIMARY KEY NOT NULL UNIQUE,

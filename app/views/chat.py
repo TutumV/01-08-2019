@@ -11,6 +11,8 @@ async def create_chat(request):
         raw_data = await request.json()
     elif request.content_type == 'application/x-www-form-urlencoded':
         raw_data = await request.post()
+    else:
+        return web.Response(status=400, text='content type must be json or urlencoded')
     try:
         creator = await User.load_from_db(request.user['id'])
         participant = await User.load_from_db(raw_data['member'])
@@ -39,7 +41,7 @@ async def create_chat(request):
                     name = raw_data['name']
                     chat = Chat(creator=creator_id, participants=participant_id, name=name)
                     await chat.save_to_db()
-                    return web.json_response(status=200, text='chat created')
+                    return web.json_response(status=201, text='chat created')
     except Exception as error:
         return web.Response(status=400, text=str(error))
 
@@ -63,6 +65,7 @@ async def get_all_chats(request):
         return web.Response(status=404, text=str(error))
 
 
+@login_required
 async def get_chat_by_id(request):
     user_id = request.user['id']
     chat_id = request.match_info['id']
@@ -79,6 +82,7 @@ async def get_chat_by_id(request):
         return  web.Response(status=404, text=str(error))
 
 
+@login_required
 async def delete_chat_by_id(request):
     chat_id = request.match_info['id']
     user_id = request.user['id']
@@ -90,6 +94,7 @@ async def delete_chat_by_id(request):
         return web.Response(status=404, text=str(error))
 
 
+@login_required
 async def update_chat_by_id(request):
     chat_id = request.match_info['id']
     user_id = request.user['id']
@@ -97,6 +102,8 @@ async def update_chat_by_id(request):
         raw_data = await request.json()
     elif request.content_type == 'application/x-www-form-urlencoded':
         raw_data = await request.post()
+    else:
+        return web.Response(status=400, text='content type must be json or urlencoded')
     try:
         if raw_data['name'].strip():
             async with Database.pool.acquire() as connection:

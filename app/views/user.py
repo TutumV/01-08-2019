@@ -9,13 +9,14 @@ import settings
 import jwt
 
 
-# http://127.0.0.1:8080/api/users POST
-# @login_required
+@login_required
 async def create_user(request):
     if request.content_type == 'application/json':
         raw_data = await request.json()
     elif request.content_type == 'application/x-www-form-urlencoded':
         raw_data = await request.post()
+    else:
+        return web.Response(status=400, text='content type must be json or urlencoded')
     try:
         name = raw_data['name']
         email = raw_data['email']
@@ -27,7 +28,7 @@ async def create_user(request):
     except Exception as e:
         return web.Response(status=400, text=str(e))
 
-# http://127.0.0.1:8080/api/users GET
+
 @login_required
 async def get_all_users(request):
     try:
@@ -36,7 +37,7 @@ async def get_all_users(request):
     except Exception as error:
         return  web.Response(status=404)
 
-# http://127.0.0.1:8080/api/users/me GET
+
 @login_required
 async def profile(request):
     data = {
@@ -47,12 +48,13 @@ async def profile(request):
     return web.json_response(data)
 
 
-# http://127.0.0.1:8080/api/users/login POST
 async def login(request):
     if request.content_type == 'application/json':
         raw_data = await request.json()
     elif request.content_type == 'application/x-www-form-urlencoded':
         raw_data = await request.post()
+    else:
+        return web.Response(status=400, text='content type must be json or urlencoded')
     headers = request.headers.get('token')
     if headers:
         return web.json_response({'message': 'you already sign-in'})
@@ -76,12 +78,11 @@ async def login(request):
     try:
         token = Token(token=create_token, date=time, user_id=user_id)
         await token.save_to_db()
-        print('1')
         return web.json_response(headers=headers, text="Hello!")
     except Exception as error:
         return web.Response(text="Unexpected error")
 
-# http://127.0.0.1:8080/api/users/logout POST
+
 @login_required
 async def logout(request):
     if request.user:
@@ -95,7 +96,6 @@ async def logout(request):
         return web.Response(status=401, text="you are not sign-in")
 
 
-# http://127.0.0.1:8080/api/users/:id GET
 @login_required
 async def get_user_by_id(request):
     user_id = request.match_info['id']
@@ -111,7 +111,6 @@ async def get_user_by_id(request):
         return web.Response(status=400)
 
 
-# http://127.0.0.1:8080/api/users/:id PUT
 @login_required
 async def update_user_by_id(request):
     user_id = request.match_info['id']
@@ -119,6 +118,8 @@ async def update_user_by_id(request):
         raw_data = await request.json()
     elif request.content_type == 'application/x-www-form-urlencoded':
         raw_data = await request.post()
+    else:
+        return web.Response(status=400, text='content type must be json or urlencoded')
     try:
         user = await User.load_from_db(user_id)
         if 'name' in raw_data:
@@ -133,7 +134,7 @@ async def update_user_by_id(request):
     except Exception as error:
         return web.Response(status=400, text='BAD REQUEST OR NOT FOUND')
 
-# http://127.0.0.1:8080/api/users/:id DELETE
+
 @login_required
 async def delete_user_by_id(request):
     user_id = request.match_info['id']

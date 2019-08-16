@@ -3,9 +3,12 @@ from settings import config
 from routes.user import user_setup_routes
 from routes.chat import chat_setup_routes
 from routes.message import message_setup_routes
+from routes.community import community_setup_routes
+from routes.post import post_setup_routes
 from middleware import setup_middlewares
 import asyncio
 from database import Database
+
 
 def init_app():
     app = web.Application()
@@ -14,6 +17,8 @@ def init_app():
     user_setup_routes(app)
     chat_setup_routes(app)
     message_setup_routes(app)
+    community_setup_routes(app)
+    post_setup_routes(app)
     setup_middlewares(app)
     return app
 

@@ -7,11 +7,21 @@ Content-Type: application/json
   "password": "1999513"
 }
 
-###
+### CREATE USER
 
 GET http://127.0.0.1:8080/api/users/
 
-###
+### GET ALL
+
+GET http://127.0.0.1:8080/api/users/10573/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### GET USER BY ID
+
+DELETE http://127.0.0.1:8080/api/users/10573/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE USER BY ID
 
 POST http://127.0.0.1:8080/api/users/login/
 Content-Type: application/json
@@ -21,17 +31,18 @@ Content-Type: application/json
   "password": "1999513"
 }
 
-###
+### LOGIN
 
 GET http://127.0.0.1:8080/api/users/me
 Content-Type: application/json
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA2IDIxOjE2OjMyLjQxODcyNCJ9.ZtGsX_m4Yoqt4jD4rATxK23pvpu_cCuFVKUuoK8MWH0
 
-###
+### PROFILE
 
 POST http://127.0.0.1:8080/api/users/logout
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA2IDIxOjE2OjMyLjQxODcyNCJ9.ZtGsX_m4Yoqt4jD4rATxK23pvpu_cCuFVKUuoK8MWH0
-###
+
+### LOGOUT
 
 PUT http://127.0.0.1:8080/api/users/10572
 Content-Type: application/json
@@ -40,7 +51,7 @@ Content-Type: application/json
   "name": "frank"
 }
 
-###
+### UPDATE USER NAME
 
 POST http://127.0.0.1:8080/api/chat/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
@@ -51,19 +62,19 @@ Content-Type: application/json
   "member": 10572
 }
 
-###
+### CREATE CHAT
 
 GET http://127.0.0.1:8080/api/chat/all/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
 
-###
+### GET ALL CHATS
 
 GET http://127.0.0.1:8080/api/chat/12/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
 
-###
+### GET CHAT BY ID
 
-PUT http://127.0.0.1:8080/api/chat/12/
+PATCH http://127.0.0.1:8080/api/chat/12/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
 Content-Type: application/json
 
@@ -71,14 +82,14 @@ Content-Type: application/json
   "name": "second"
 }
 
-###
+### UPDATE CHAT BY ID
 
 DELETE http://127.0.0.1:8080/api/chat/12/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MiwiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA3IDE1OjI5OjI1LjA3MDA4NSJ9.zfKd82d4lgsTN4nYACZEEQzdjSWEj2yrrDjLPoX08FI
 
-###
+### DELETE CHAT BY ID
 
-POST http://127.0.0.1:8080/api/message/1/
+POST http://127.0.0.1:8080/api/chat/message/1/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
 Content-Type: application/json
 
@@ -86,9 +97,153 @@ Content-Type: application/json
   "content": "hello"
 }
 
-###
+### CREATE CHAT MESSAGE
 
-GET http://127.0.0.1:8080/api/message/1/
+GET http://127.0.0.1:8080/api/chat/message/1/
 Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
 
-###
+### GET ALL MESSAGES IN CHAT
+
+DELETE http://127.0.0.1:8080/api/chat/message/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE ALL MESSAGES IN CHAT
+
+DELETE http://127.0.0.1:8080/api/chat/message/1/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE MESSAGE IN CHAT
+
+PATCH http://127.0.0.1:8080/api/chat/message/1/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "content": "hello"
+}
+
+
+### PATCH MESSAGE IN CHAT BY ID
+
+POST http://127.0.0.1:8080/api/community/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "name": "second"
+}
+
+### CREATE COMMUNITY
+
+GET http://127.0.0.1:8080/api/community/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+### GET ALL COMMUNITIES
+
+GET http://127.0.0.1:8080/api/community/3/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+### GET COMMUNITY BY ID
+
+PATCH http://127.0.0.1:8080/api/community/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "name": "first"
+}
+
+### UPDATE COMMUNITY NAME BY ID
+
+DELETE http://127.0.0.1:8080/api/community/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE COMMUNITY BY ID
+
+POST http://127.0.0.1:8080/api/community/2/subscribe/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### SUBSCROBE TO COMMUNITY
+
+POST http://127.0.0.1:8080/api/community/2/unsubscribe/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### UNSUBSCRIBE FROM COMMUNITY
+
+POST http://127.0.0.1:8080/api/community/2/post/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "header": "first",
+  "text": "post"
+}
+
+### CREATE COMMUNITY POST
+
+DELETE http://127.0.0.1:8080/api/community/2/post/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE ALL COMMUNITY POST BY COMMUNITY ID
+
+DELETE http://127.0.0.1:8080/api/community/2/post/10/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE COMMUNITY POST BY POST ID
+
+GET http://127.0.0.1:8080/api/community/2/post/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### GET ALL POSTS BY COMMUNITY ID
+
+GET http://127.0.0.1:8080/api/community/2/post/10/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### GET POST BY POST ID
+
+PATCH http://127.0.0.1:8080/api/community/2/post/11/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "text": "lol"
+}
+
+### UPDATE COMMUNITY POST BY ID
+
+GET http://127.0.0.1:8080/api/group/message/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### GET GROUP MESSAGE BY GROUP ID
+
+POST http://127.0.0.1:8080/api/group/message/1/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "content": "hello"
+}
+
+### CREATE GROUP MESSAGE BY GROUP ID
+
+DELETE http://127.0.0.1:8080/api/group/1/message/2/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE MESSAGE IN GROUP BY MESSAGE ID
+
+DELETE http://127.0.0.1:8080/api/group/1/message/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+
+### DELETE ALL MESSAGES IN GROUP BY GROUP ID
+
+PATCH http://127.0.0.1:8080/api/group/1/message/2/
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDU3MywiY3JlYXRlX2RhdGUiOiIyMDE5LTA4LTA4IDIxOjEwOjMzLjc5OTUwMiJ9.wq3muC8XXrG_Ht8gkM03VVzwiAeaQ3J_k5GWuUJlbQs
+Content-Type: application/json
+
+{
+  "content": "hello"
+}
+
+### EDIT MESSAGE IN GROUP CHAT BY MESSAGE ID

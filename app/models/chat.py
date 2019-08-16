@@ -1,6 +1,7 @@
 from models.base import Base
 from database import Database
 
+
 class Chat(Base):
     def __init__(self, name, creator, participants):
         self.name = name

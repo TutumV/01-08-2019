@@ -4,6 +4,7 @@ import jwt
 from models.user import User
 from models.token import Token
 from datetime import datetime
+from database import Database
 
 
 @web.middleware
@@ -38,6 +39,24 @@ async def request_middleware(request, handler):
     }
     print(request_data)
     return await handler(request)
+
+
+def check_subscribe(func):
+    async def wrapper(request):
+        group_id = request.match_info['group_id']
+        user = request.user['id']
+        try:
+            async with Database.pool.acquire() as connection:
+                subscribe = await connection.fetch('''SELECT user_id, groupchat_id FROM public.users_groupchat WHERE user_id = $1 AND groupchat_id = $2''', user, int(group_id))
+                if subscribe is None:
+                    return web.Response(status=403, text='you are not subscribe')
+                else:
+                    return await func(request)
+        except Exception as error:
+            print(error)
+            return web.Response(status=400)
+
+    return wrapper
 
 
 def login_required(func):
